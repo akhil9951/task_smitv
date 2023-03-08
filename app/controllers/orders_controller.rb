@@ -21,10 +21,9 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
-       @order = current_user.order.new(order_params)
+       @order = current_user.orders.new(order_params)
        if @order.save
         NotificationMailer.create_notification(@order).deliver_now
-         current_cart.cart_items.delete_all
          flash.notice = "Your Order Has Been Successfully Placed!"
          redirect_to payment_path
        else

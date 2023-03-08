@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinict: true)
   end
 
   # GET /products/1 or /products/1.json
