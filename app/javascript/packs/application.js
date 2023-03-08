@@ -15,3 +15,7 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+where('price=?').order("price ASC")
+2.6.5 :014 > Product.where("price>?",'3000').order("price ASC");
+
